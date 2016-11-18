@@ -1,5 +1,6 @@
 package com.selection.data;
 
+import com.selection.models.Role;
 import com.selection.models.User;
 import com.selection.services.RoleService;
 import com.selection.services.UserService;
@@ -29,13 +30,29 @@ public class Data implements ApplicationListener<ContextRefreshedEvent>{
 
     @Override
     public void onApplicationEvent(ContextRefreshedEvent event) {
-      insertUsers();
+      insertUsersAndRoles();
     }
 
-    public void insertUsers() {
-        User user = new User();
-        user.setUserName("user1");
-        user.setPassword("pass");
-        userService.saveOrUpdate(user);
+    public void insertUsersAndRoles() {
+        User userAdmin = new User();
+        userAdmin.setUserName("admin");
+        userAdmin.setPassword("admin");
+        userService.saveOrUpdate(userAdmin);
+        User userMortal = new User();
+        userMortal.setUserName("mortal");
+        userMortal.setPassword("mortal");
+        userService.saveOrUpdate(userMortal);
+
+        Role roleAdmin = new Role();
+        roleAdmin.setName("ADMIN");
+        roleService.saveOrUpdate(roleAdmin);
+
+        Role roleUsuario = new Role();
+        roleUsuario.setName("USER");
+        roleService.saveOrUpdate(roleUsuario);
+    }
+
+    public void insertRoles() {
+
     }
 }

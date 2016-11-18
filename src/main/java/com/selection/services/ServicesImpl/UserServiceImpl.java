@@ -24,7 +24,9 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<?> listAll() {
-        return null;
+        List<User> userList = new ArrayList<>();
+        userRepository.findAll().forEach(userList::add);
+        return userList;
     }
 
     @Override
@@ -34,11 +36,45 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User saveOrUpdate(User domainObject) {
-        return null;
+        return userRepository.save(domainObject);
     }
 
     @Override
     public void delete(Long id) {
 
     }
+
+//    @Override
+//    public User findByUserName(String userName) {
+//        return null;
+//    }
+
+
+//    @Override
+//    public List<?> listAll() {
+//        List<User> userList = new ArrayList<>();
+//        userRepository.findAll().forEach(userList::add);
+//        return userList;
+//    }
+//
+//    @Override
+//    public User getById(Long id) {
+//        return userRepository.findOne(id);
+//    }
+//
+//    @Override
+//    public User saveOrUpdate(User object) {
+//        return userRepository.save(object);
+//    }
+//
+//    @Override
+//    public void delete(Long id) {
+//        User user = userRepository.findOne(id);
+//        userRepository.delete(user);
+//    }
+//
+//    @Override
+//    public User findByUserName(String userName) {
+//        return userRepository.findByUserName(userName);
+   // }
 }

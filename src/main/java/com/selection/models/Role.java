@@ -13,7 +13,7 @@ public class Role {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
-    private String role;
+    private String name;
     @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable
     private List<User> users = new ArrayList<>();
@@ -26,12 +26,12 @@ public class Role {
         this.id = id;
     }
 
-    public String getRole() {
-        return role;
+    public String getName() {
+        return name;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public List<User> getUsers() {
@@ -54,5 +54,6 @@ public class Role {
 
     public void removeUser(User user) {
         this.users.remove(user);
+        user.getRoles().remove(this);
     }
 }
