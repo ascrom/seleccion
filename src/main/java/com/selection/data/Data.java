@@ -37,22 +37,13 @@ public class Data implements ApplicationListener<ContextRefreshedEvent>{
         User userAdmin = new User();
         userAdmin.setUserName("admin");
         userAdmin.setPassword("admin");
+        userAdmin.setRol("ADMIN");
         userService.saveOrUpdate(userAdmin);
         User userMortal = new User();
         userMortal.setUserName("mortal");
         userMortal.setPassword("mortal");
+        userMortal.setRol("USER");
         userService.saveOrUpdate(userMortal);
-
-        Role roleAdmin = new Role();
-        roleAdmin.setName("ADMIN");
-        roleService.saveOrUpdate(roleAdmin);
-
-        Role roleUsuario = new Role();
-        roleUsuario.setName("USER");
-        roleService.saveOrUpdate(roleUsuario);
     }
 
-    public void insertRoles() {
-
-    }
 }

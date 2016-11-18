@@ -17,9 +17,7 @@ public class User {
     private String password;
     private String encryptedPassword;
     private Boolean enabled = true;
-    @ManyToMany
-    @JoinTable
-    private List<Role> roles = new ArrayList<>();
+    private String rol;
 
     public Long getId() {
         return id;
@@ -61,26 +59,11 @@ public class User {
         this.enabled = enabled;
     }
 
-    public List<Role> getRoles() {
-        return roles;
+    public String getRol() {
+        return rol;
     }
 
-    public void setRoles(List<Role> roles) {
-        this.roles = roles;
-    }
-
-    public void addRole(Role role) {
-        if(!this.roles.contains(role)) {
-            this.roles.add(role);
-        }
-
-        if(!role.getUsers().contains(this)) {
-            role.getUsers().add(this);
-        }
-    }
-
-    public void removeRole(Role role) {
-        this.roles.remove(role);
-        role.getUsers().remove(this);
+    public void setRol(String rol) {
+        this.rol = rol;
     }
 }

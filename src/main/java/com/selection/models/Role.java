@@ -14,9 +14,8 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.AUTO)
     Long id;
     private String name;
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable
-    private List<User> users = new ArrayList<>();
+    @OneToOne
+    private User user;
 
     public Long getId() {
         return id;
@@ -34,26 +33,11 @@ public class Role {
         this.name = name;
     }
 
-    public List<User> getUsers() {
-        return users;
+    public User getUser() {
+        return user;
     }
 
-    public void setUsers(List<User> users) {
-        this.users = users;
-    }
-
-    public void addUser(User user) {
-        if(!this.users.contains(user)) {
-            this.users.add(user);
-        }
-
-        if(!user.getRoles().contains(this)) {
-            user.getRoles().add(this);
-        }
-    }
-
-    public void removeUser(User user) {
-        this.users.remove(user);
-        user.getRoles().remove(this);
+    public void setUser(User user) {
+        this.user = user;
     }
 }

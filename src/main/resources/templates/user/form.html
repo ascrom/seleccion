@@ -21,10 +21,9 @@
                     <input type="password" name="password" />
                 </div>
             </div>
-            <select th:field="*{roles}">
-                <option th:each="dropDownItem : ${rollist}"
-                        th:value="${dropDownItem.id}"
-                        th:text="${dropDownItem.name}" />
+            <select th:field="*{rol}">
+                <option selected="selected" value="ADMIN">ADMIN</option>
+                <option value="USER">USER</option>
             </select>
             <div class="row">
                 <button type="submit" class="btn btn-default">Submit</button>
